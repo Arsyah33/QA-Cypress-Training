@@ -1,0 +1,22 @@
+/// <reference types="cypress" />
+
+describe('my checkbox test suit', function(){
+it('checkbox test', function(){
+     cy.visit('https://codenboxautomationlab.com/practice/')
+     
+     /// static dropdown
+     cy.get('#dropdown-class-example').select('Selenium').should('have.value', 'option1')
+
+
+     // dynamic dropdown
+    cy.get('#autocomplete').type('can')
+    cy.get('.ui-menu-item div').each(($el, index, $list) => {
+    // $el is a wrapped jQuery element
+    if ($el.text() === 'Canada') {
+    
+        cy.wrap($el).click()
+
+    }
+    })
+    })
+})
